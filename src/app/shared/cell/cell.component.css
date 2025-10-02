@@ -1,0 +1,16 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  border-radius: 0.5rem;
+  padding: 1rem;
+
+  background-color: #515151;
+}
+
+:host .employee {
+  font-weight: bold;
+  font-size: 10px;
+  text-align: end;
+}
