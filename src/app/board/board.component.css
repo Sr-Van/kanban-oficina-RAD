@@ -1,0 +1,23 @@
+.board {
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.board .column {
+  flex: 1;
+  background-color: #f2f2f2;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.column.to-do {
+  border: #f75454 2px solid;
+}
+.column.in-progress {
+  border: #e1b12d 2px solid;
+}
+.column.done {
+  border: #36cf36 2px solid;
+}
