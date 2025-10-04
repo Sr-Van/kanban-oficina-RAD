@@ -8,7 +8,8 @@ import { Component, input } from '@angular/core';
   styleUrl: './cell.component.css',
 })
 export class CellComponent {
-  public title = input();
-  public description = input();
-  public employee = input();
+  public empty = input<boolean>(false);
+  public title = input<string>();
+  public description = input<string>();
+  public employee = input<string>();
 }
