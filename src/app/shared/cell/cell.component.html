@@ -1,3 +1,7 @@
+@if(!empty()){
 <h4>{{ title() }}</h4>
 <p>{{ description() }}</p>
 <p class="employee">{{ employee() }}</p>
+}@else {
+<p>Coluna vazia</p>
+}
