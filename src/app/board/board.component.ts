@@ -1,11 +1,19 @@
 import { Order } from './../shared/order.interface';
 import { Component } from '@angular/core';
 import { CellComponent } from '../shared/cell/cell.component';
+import {
+  CdkDrag,
+  CdkDragDrop,
+  CdkDropList,
+  CdkDropListGroup,
+  moveItemInArray,
+  transferArrayItem,
+} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-board',
   standalone: true,
-  imports: [CellComponent],
+  imports: [CellComponent, CdkDropList, CdkDrag, CdkDropListGroup],
   templateUrl: './board.component.html',
   styleUrl: './board.component.css',
 })
@@ -16,6 +24,20 @@ export class BoardComponent {
       title: 'Order 1',
       description: 'Description 1',
       employee: 'John Doe',
+      status: 'To Do',
+    },
+    {
+      id: 5,
+      title: 'Order 5',
+      description: 'Description 5',
+      employee: 'almiron',
+      status: 'To Do',
+    },
+    {
+      id: 4,
+      title: 'Order 4',
+      description: 'Description 4',
+      employee: 'Jnny',
       status: 'To Do',
     },
     {
@@ -43,4 +65,23 @@ export class BoardComponent {
   public doneItems: Order[] = this.mockData.filter(
     (item) => item.status === 'Done'
   );
+
+  public drop(event: CdkDragDrop<Order[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    } else {
+      console.log(event.currentIndex);
+      console.log(event.previousIndex);
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    }
+  }
 }
